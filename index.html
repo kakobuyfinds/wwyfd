@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--
+  文件名：index.html
+  搜索结果参考：https://acbuy.io/、https://acbuyspread.com/、https://acbuy.net/、https://acbuy-spreadsheet.org/。
+  这些页面侧重分类、美元价格、QC 或下单流程。本页补充可筛选的真实 CAFANS 商品、可下载的比较表和运费预算工具。
+  商品与参考价来源：https://cafans.com/ 首页 Featured Product Finds。详情链接已逐项核对。
+  收录状态：尚未提交。部署地址未提供。上线后，在已验证的 Google Search Console 属性中使用网址检查请求编入索引，并在 Bing Webmaster Tools 中提交正式网址。
+  https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl
+  https://www.bing.com/webmasters/help/URL-Submission-62f2860b
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ACBuy spreadsheet | CAFANS Finds, QC & Shipping Budget</title>
+  <meta name="description" content="Browse ACBuy spreadsheet finds from CAFANS, compare listed prices in USD, export a product shortlist, and plan your total order cost with a QC checklist.">
+  <meta name="robots" content="index, follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111f19">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ACBuy spreadsheet | CAFANS Finds & Shipping Budget">
+  <meta property="og:description" content="Compare CAFANS finds by category, build a CSV shortlist, and check your estimated order total.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "ACBuy spreadsheet",
+    "inLanguage": "en",
+    "description": "An independent guide to comparing CAFANS product finds, preparing QC checks and estimating a shopping-agent order budget."
+  }
+  </script>
+  <style>
+    :root{color-scheme:light;--ink:#14241b;--muted:#46594c;--line:#d4dfd5;--paper:#f5f7f1;--white:#fff;--forest:#111f19;--lime:#d8f687;--green:#235438}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+    [hidden]{display:none!important}
+    a{color:var(--green);text-underline-offset:.2em}
+    a:hover{text-decoration-thickness:.14em}
+    :focus-visible{outline:3px solid #388155;outline-offset:4px}
+    .wrap{width:min(100% - 2rem,72rem);margin-inline:auto}
+    .skip{position:absolute;left:1rem;top:-5rem;background:var(--white);padding:.5rem 1rem;z-index:2}
+    .skip:focus{top:1rem}
+    .masthead{background:var(--forest);color:var(--white)}
+    .top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem 1.5rem;padding-block:1rem;border-bottom:1px solid #394b40}
+    .brand{font-weight:800;letter-spacing:-.02em}
+    nav{display:flex;flex-wrap:wrap;gap:.4rem 1rem}
+    nav a{color:#e2ecdf;font-size:.9rem}
+    .hero{text-align:center;padding:clamp(3rem,9vw,7rem) 0;background:radial-gradient(ellipse at 50% 110%,#335d3e,transparent 70%)}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.65rem,8vw,6rem);line-height:1.04;letter-spacing:-.065em;margin-bottom:1rem}
+    h2{font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.045em;margin-bottom:.7rem}
+    h3{font-size:1.08rem;line-height:1.35;margin-bottom:.4rem}
+    .hero p{max-width:37rem;margin:0 auto 1.6rem;color:#e2ecdf}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem}
+    .button,button{display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:.6rem 1rem;border:1px solid transparent;border-radius:.65rem;font:inherit;font-weight:750;text-decoration:none;cursor:pointer}
+    .primary{background:var(--lime);color:var(--forest)}
+    .secondary{color:var(--white);border-color:#a8b9ab}
+    .hero a:focus-visible,nav a:focus-visible{outline-color:var(--lime)}
+    main{padding:clamp(2rem,6vw,4.5rem) 0}
+    section+section{margin-top:clamp(2.5rem,7vw,5rem)}
+    .muted,.category{color:var(--muted)}
+    .toolbar{display:flex;flex-wrap:wrap;align-items:end;gap:.8rem;margin:1.25rem 0 .65rem}
+    label{display:grid;gap:.25rem;font-weight:650}
+    .toolbar label:first-child{flex:2 1 15rem}
+    .toolbar label:nth-child(2){flex:1 1 11rem}
+    input,select{width:100%;min-height:44px;padding:.5rem .7rem;border:1px solid #829688;border-radius:.55rem;background:var(--white);color:var(--ink);font:inherit}
+    button{background:var(--green);color:var(--white)}
+    button:disabled{opacity:.65;cursor:default}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));gap:.9rem;margin-top:1rem}
+    .card,.panel{background:var(--white);border:1px solid var(--line);border-radius:.9rem;padding:1.15rem}
+    .card{display:flex;flex-direction:column;align-items:flex-start}
+    .category{font-size:.84rem;margin-bottom:.45rem}
+    .price{font-weight:800;margin:.1rem 0 .8rem;font-variant-numeric:tabular-nums}
+    .card a{margin-top:auto;font-weight:700}
+    .category-links{display:flex;flex-wrap:wrap;gap:.45rem 1rem;margin-top:1rem}
+    .budget-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,12rem),1fr));gap:.75rem}
+    .total{margin:1rem 0 0;color:var(--green);font-weight:800;font-size:1.25rem}
+    ol{padding-left:1.3rem;margin-bottom:0}
+    li+li{margin-top:.6rem}
+    details{border-bottom:1px solid var(--line);padding:.8rem 0}
+    details p{margin:.55rem 0 0}
+    summary{font-weight:750;cursor:pointer}
+    footer{padding:1.35rem 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;text-align:center}
+  </style>
+<link rel="canonical" href="https://kakobuyfinds.github.io/wwyfd/">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap top">
+      <span class="brand">ACBuy finds guide</span>
+      <nav aria-label="On this page">
+        <a href="#catalog">Catalog</a>
+        <a href="#qc">QC checklist</a>
+        <a href="#budget">Shipping budget</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div class="hero">
+      <div class="wrap">
+        <h1>ACBuy spreadsheet</h1>
+        <p>Compare shoes and streetwear from CAFANS, save a shortlist, and estimate what your order could cost after shipping.</p>
+        <div class="actions">
+          <a class="button primary" href="https://cafans.com">ACBuy spreadsheet</a>
+          <a class="button secondary" href="https://cafans.com">Buy it now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap" id="main">
+    <section id="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">CAFANS product catalog</h2>
+      <p class="muted">Reference prices come from the CAFANS featured catalog in USD. Check the linked listing for current price, stock and options.</p>
+
+      <div class="toolbar" id="catalog-tools" hidden>
+        <label for="query">Search product names
+          <input id="query" type="search" placeholder="Search the catalog">
+        </label>
+        <label for="category">Category
+          <select id="category">
+            <option value="">All categories</option>
+            <option>Shoes</option>
+            <option>Hoodies &amp; sweaters</option>
+            <option>T-shirts</option>
+            <option>Jackets</option>
+          </select>
+        </label>
+        <button type="button" id="export">Download filtered CSV</button>
+      </div>
+      <p class="muted" id="result-count" role="status" hidden></p>
+
+      <div class="grid" id="products">
+        <article class="card" data-category="Shoes" data-price="62.36">
+          <p class="category">Shoes</p>
+          <h3>Leather Slides</h3>
+          <p class="price">$62.36 USD</p>
+          <a href="https://cafans.com/goods-158791.html" aria-label="View Leather Slides on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="Shoes" data-price="46.67">
+          <p class="category">Shoes</p>
+          <h3>Platform Slides</h3>
+          <p class="price">$46.67 USD</p>
+          <a href="https://cafans.com/goods-158790.html" aria-label="View Platform Slides on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="Hoodies &amp; sweaters" data-price="27.50">
+          <p class="category">Hoodies &amp; sweaters</p>
+          <h3>Sweatshirt</h3>
+          <p class="price">$27.50 USD</p>
+          <a href="https://cafans.com/goods-158792.html" aria-label="View Sweatshirt on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="Hoodies &amp; sweaters" data-price="37.22">
+          <p class="category">Hoodies &amp; sweaters</p>
+          <h3>Thug Club - Rock Hoodie</h3>
+          <p class="price">$37.22 USD</p>
+          <a href="https://cafans.com/goods-158280.html" aria-label="View Thug Club Rock Hoodie on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="T-shirts" data-price="32.64">
+          <p class="category">T-shirts</p>
+          <h3>Unisex Embroidered Oversized T-Shirt</h3>
+          <p class="price">$32.64 USD</p>
+          <a href="https://cafans.com/goods-158200.html" aria-label="View Unisex Embroidered Oversized T-Shirt on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="Jackets" data-price="42.78">
+          <p class="category">Jackets</p>
+          <h3>Corteiz Jacket</h3>
+          <p class="price">$42.78 USD</p>
+          <a href="https://cafans.com/goods-158279.html" aria-label="View Corteiz Jacket on CAFANS">View on CAFANS</a>
+        </article>
+        <article class="card" data-category="Jackets" data-price="84.54">
+          <p class="category">Jackets</p>
+          <h3>Jacket</h3>
+          <p class="price">$84.54 USD</p>
+          <a href="https://cafans.com/goods-158222.html" aria-label="View Jacket on CAFANS">View on CAFANS</a>
+        </article>
+      </div>
+
+      <nav class="category-links" aria-label="Full CAFANS categories">
+        <a href="https://cafans.com/category-911-Shoes.html">All shoes</a>
+        <a href="https://cafans.com/category-912-Hoodies%2FSweaters.html">All hoodies and sweaters</a>
+        <a href="https://cafans.com/category-913-T-Shirts.html">All T-shirts</a>
+        <a href="https://cafans.com/category-914-Jackets.html">All jackets</a>
+      </nav>
+    </section>
+
+    <section id="qc" aria-labelledby="qc-title">
+      <h2 id="qc-title">What to check before approving shipment</h2>
+      <div class="panel">
+        <ol>
+          <li><strong>Save the exact listing and variant.</strong> Record the size, color and seller link so you can match them against your order.</li>
+          <li><strong>Compare measurements.</strong> For shoes, compare insole length if available. For a hoodie or jacket, measure the chest width and body length of a garment you already wear.</li>
+          <li><strong>Review warehouse QC photos if available.</strong> Check the item and size label against your order. For shoes, ask for both soles if the standard photos omit them. For clothing, ask for a clear photo of any seam or print you want to inspect.</li>
+          <li><strong>Check the exchange terms before shipping internationally.</strong> Confirm the return window and any local return postage with your agent while the parcel is still at the warehouse.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="budget" aria-labelledby="budget-title">
+      <h2 id="budget-title">Estimate your total order cost</h2>
+      <p id="budget-help" class="muted">Enter amounts in USD. Use the agent’s quote for your destination and check whether the shipping route charges by actual or volumetric weight.</p>
+      <div class="panel" id="budget-tool" hidden>
+        <div class="budget-grid" role="group" aria-label="Estimated costs in USD" aria-describedby="budget-help">
+          <label>Item subtotal<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+          <label>Domestic shipping<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+          <label>Agent &amp; payment fees<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+          <label>International shipping<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+          <label>Estimated taxes &amp; duties<input type="number" min="0" step="0.01" inputmode="decimal" placeholder="0.00"></label>
+        </div>
+        <p class="total">Estimated total <output id="total" aria-live="polite">$0.00</output></p>
+      </div>
+      <noscript><p>Add the item subtotal, domestic shipping, agent and payment fees, international shipping, and estimated taxes and duties to calculate your budget.</p></noscript>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">ACBuy spreadsheet FAQ</h2>
+      <details>
+        <summary>What is an ACBuy spreadsheet?</summary>
+        <p>It is a product comparison list for shoppers who use a buying agent. This guide uses selected CAFANS listings and lets you export filtered results as a CSV for Excel or Google Sheets.</p>
+      </details>
+      <details>
+        <summary>Does the listed price include international shipping?</summary>
+        <p>The displayed figure is a CAFANS item-price estimate. Get a destination-specific shipping quote and confirm fees, taxes and duties before setting your total budget.</p>
+      </details>
+      <details>
+        <summary>Where do I place an order?</summary>
+        <p>Open the product on CAFANS, review the details, and check the available seller or agent links for that listing. Confirm the exact variant and final cost with the service handling your order.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Independent shopping guide. Product references come from <a href="https://cafans.com">CAFANS</a>.</div>
+  </footer>
+
+  <script>
+    (() => {
+      const cards = [...document.querySelectorAll("#products .card")];
+      const query = document.getElementById("query");
+      const category = document.getElementById("category");
+      const count = document.getElementById("result-count");
+      const exportButton = document.getElementById("export");
+
+      function filterProducts() {
+        const search = query.value.trim().toLowerCase();
+        for (const card of cards) {
+          const name = card.querySelector("h3").textContent.toLowerCase();
+          const matchesCategory = !category.value || card.dataset.category === category.value;
+          card.hidden = !matchesCategory || !name.includes(search);
+        }
+        const visibleCount = cards.filter(card => !card.hidden).length;
+        count.textContent = visibleCount
+          ? `${visibleCount} of ${cards.length} products`
+          : "No products match. Try a different name or category.";
+        exportButton.disabled = visibleCount === 0;
+      }
+
+      function csvCell(value) {
+        return `"${String(value).replaceAll('"', '""')}"`;
+      }
+
+      query.addEventListener("input", filterProducts);
+      category.addEventListener("change", filterProducts);
+      exportButton.addEventListener("click", () => {
+        const rows = [["Product", "Category", "Reference price (USD)", "CAFANS URL", "Selected size", "Selected color", "QC notes"]];
+        for (const card of cards.filter(item => !item.hidden)) {
+          rows.push([
+            card.querySelector("h3").textContent,
+            card.dataset.category,
+            card.dataset.price,
+            card.querySelector("a").href,
+            "", "", ""
+          ]);
+        }
+
+        const csv = rows.map(row => row.map(csvCell).join(",")).join("\r\n");
+        const url = URL.createObjectURL(new Blob(["\uFEFF", csv], {type: "text/csv;charset=utf-8"}));
+        const download = document.createElement("a");
+        download.href = url;
+        download.download = "acbuy-spreadsheet-cafans.csv";
+        document.body.append(download);
+        download.click();
+        download.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+
+      filterProducts();
+      document.getElementById("catalog-tools").hidden = false;
+      count.hidden = false;
+
+      const budget = document.getElementById("budget-tool");
+      const amounts = [...budget.querySelectorAll("input")];
+      const total = document.getElementById("total");
+      const dollars = new Intl.NumberFormat("en-US", {style: "currency", currency: "USD"});
+
+      budget.addEventListener("input", () => {
+        const invalid = amounts.some(input => !input.validity.valid);
+        if (invalid) {
+          total.textContent = "Enter non-negative amounts with up to two decimal places.";
+          return;
+        }
+
+        const cents = amounts.reduce((sum, input) => sum + Math.round(Number(input.value) * 100), 0);
+        total.textContent = Number.isSafeInteger(cents)
+          ? dollars.format(cents / 100)
+          : "Enter a smaller amount.";
+      });
+      budget.hidden = false;
+    })();
+  </script>
+</body>
+</html>
